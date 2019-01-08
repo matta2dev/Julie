@@ -58,13 +58,15 @@ var x = setInterval(function() {
   // Output the result in an element with id="demo"
   document.getElementById("demo").innerHTML = days + " days";
   document.getElementById("demo1").innerHTML = hours + " hours";
-  document.getElementById("demo1").innerHTML = minutes + " minutes";
+  document.getElementById("demo2").innerHTML = minutes + " minutes";
     
   // If the count down is over, write some text 
   if (distance < 0) {
     clearInterval(x);
     document.getElementById("demo").innerHTML = "Julie has already left the building";
     document.getElementById("demo1").innerHTML = "";
+    document.getElementById("demo2").innerHTML = "";
+  }
   }
 }, 1000);
 </script>
