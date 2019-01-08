@@ -33,7 +33,7 @@
     
    
 <p id="demo"></p>
-
+<p id="demo1"></p>
 <script>
 // Set the date we're counting down to
 var countDownDate = new Date("Apr 30, 2019 16:00:00").getTime();
@@ -55,13 +55,13 @@ var x = setInterval(function() {
     
   // Output the result in an element with id="demo"
   document.getElementById("demo").innerHTML = days + " days " + hours + " hours";
-  document.getElementById("demo").innerHTML = days + " days " + hours + " hours";
+  document.getElementById("demo1").innerHTML = days + " days " + hours + " hours";
     
   // If the count down is over, write some text 
   if (distance < 0) {
     clearInterval(x);
     document.getElementById("demo").innerHTML = "Julie has already left the building";
-    document.getElementById("demo").innerHTML = "";
+    document.getElementById("demo1").innerHTML = "";
   }
 }, 1000);
 </script>
