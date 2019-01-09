@@ -53,6 +53,8 @@ function myFunction() {
   var x = document.getElementById("myDIV");
   if (x.innerHTML === "Count down to doomsday:") {
     x.innerHTML = "Count down to freedom!";
+      document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
   } else {
     x.innerHTML = "Count down to doomsday:";
       document.body.scrollTop = 0;
