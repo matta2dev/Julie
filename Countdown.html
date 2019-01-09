@@ -30,7 +30,7 @@
     <title>Countdown to Julie leaving</title>
 </head>
 <body>
-    <h1>Count down to doomsday:</h1>
+    <h1 id="myDIV">Count down to doomsday:</h1>
     
    
 <p id="demo"></p>
@@ -39,6 +39,15 @@
 <button>Change perspective</button>
 <script src="scripts/main.js"></script>
 <script>
+    
+function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.innerHTML === "Hello") {
+    x.innerHTML = "Swapped text!";
+  } else {
+    x.innerHTML = "Hello";
+  }
+}    
 // Set the date we're counting down to
 var countDownDate = new Date("Apr 30, 2019 16:00:00").getTime();
 
