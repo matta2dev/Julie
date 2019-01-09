@@ -55,6 +55,8 @@ function myFunction() {
     x.innerHTML = "Count down to freedom!";
   } else {
     x.innerHTML = "Count down to doomsday:";
+      document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
   }
 }    
 // Set the date we're counting down to
