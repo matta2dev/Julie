@@ -3,46 +3,29 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-  body{
-  background-color: black;
-	text-align: center;
-	background: black;
-  font-family: sans-serif;
-  font-weight: bold;
-}
-h1{
-  color: #4f4;
-  font-weight: bold;
-  font-size: 40px;
-  margin: 40px 0px 20px;
-}
-#clockdiv{
-	font-family: sans-serif;
-	color: #fff;
-	display: inline-block;
-	font-weight: bold;
-	text-align: center;
-	font-size: 30px;
-    background-color: black;
-}
-#clockdiv > div{
-	padding: 10px;
-	border-radius: 3px;
-	background: #4f4;
-	display: inline-block;
-}
-#clockdiv div > span{
-	padding: 15px;
-	border-radius: 3px;
-	background: #00816A;
-	display: inline-block;
-}
-.smalltext{
-	padding-top: 5px;
-	font-size: 16px;
-	color: black;
-	font-weight: bold;
-}
+    html, body {
+        height: 700px;
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        background-color: black;
+        color: #fff;
+        font: 18px Cousine, Menlo, Monaco, monospace;
+    }
+    p {
+      text-align: center;
+      //padding: 30% 0;
+      font-size: 60px;
+      margin-top: 0px;
+    }
+    h1 {
+        text-align: center;
+        margin: 0;
+        padding: 20px 0;    
+        color: #4f4;
+   }
+    
    button {
   background-color: #4f4;
   border: none;
@@ -60,25 +43,9 @@ h1{
     <h1 id="myDIV">Count down to doomsday:</h1>
     
    
-<h1>Countdown Clock</h1>
-<div id="clockdiv">
-  <div>
-    <span class="days"></span>
-    <div class="smalltext">Days</div>
-  </div>
-  <div>
-    <span class="hours"></span>
-    <div class="smalltext">Hours</div>
-  </div>
-  <div>
-    <span class="minutes"></span>
-    <div class="smalltext">Minutes</div>
-  </div>
- <!-- <div>
-    <span class="seconds"></span>
-    <div class="smalltext">Seconds</div>
-  </div>-->
-</div>
+<p id="demo"></p>
+<p id="demo1"></p>
+<p id="demo2"></p>
     <p><button onclick="myFunction()">Change perspective</button></p>
 <script>
     
@@ -94,41 +61,35 @@ function myFunction() {
   document.documentElement.scrollTop = 0;
   }
 }    
-function getTimeRemaining(endtime) {
-  var t = Date.parse(endtime) - Date.parse(new Date());
-  var seconds = Math.floor((t / 1000) % 60);
-  var minutes = Math.floor((t / 1000 / 60) % 60);
-  var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
-  var days = Math.floor(t / (1000 * 60 * 60 * 24));
-  return {
-    'total': t,
-    'days': days,
-    'hours': hours,
-    'minutes': minutes,
-    'seconds': seconds
-  };
-}
-function initializeClock(id, endtime) {
-  var clock = document.getElementById(id);
-  var daysSpan = clock.querySelector('.days');
-  var hoursSpan = clock.querySelector('.hours');
-  var minutesSpan = clock.querySelector('.minutes');
-  var secondsSpan = clock.querySelector('.seconds');
-  function updateClock() {
-    var t = getTimeRemaining(endtime);
-    daysSpan.innerHTML = t.days;
-    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-    if (t.total <= 0) {
-      clearInterval(timeinterval);
-    }
+// Set the date we're counting down to
+var countDownDate = new Date("Apr 30, 2019 16:00:00").getTime();
+// Update the count down every 1 second
+var x = setInterval(function() {
+  // Get todays date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = days + " days";
+  document.getElementById("demo1").innerHTML = hours + " hours";
+  document.getElementById("demo2").innerHTML = minutes + " minutes";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "Julie has already left the building";
+    document.getElementById("demo1").innerHTML = "";
+    document.getElementById("demo2").innerHTML = "";
   }
-  updateClock();
-  var timeinterval = setInterval(updateClock, 60000);
-}
-var deadline = "Apr 30, 2019 15:37:25";
-initializeClock('clockdiv', deadline);
+}, 1000);
 </script>
 
 </body>
